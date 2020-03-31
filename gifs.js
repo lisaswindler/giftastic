@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+    $("#animate-text").hide();
  // Initial array of gifs
  var gifChoices = ["cats", "elephants", "sloths", "pigs", "goats", "pandas", "otters"];
  
@@ -16,22 +17,26 @@ function displayGifs() {
      url: queryURL,
      method: "GET"
    }).then(function(response) {
+       console.log(response);
 // Creates a div to hold the gif
      var gifDiv = $("<div>");
+// Shows the text with click instructions     
+     $("#animate-text").show();
+// Adds a class to the gifDiv for css
+    gifDiv.addClass("gif-div"); 
 // Retrieves the rating
     for (var i = 0; i < response.data.length; i++) {
      var rating = response.data[i].rating;
+     var gifStill = response.data[i].images.downsized_still.url;
+     var gifAnimated = response.data[i].images.downsized_large.url;
      // Filters by rating
         if (rating === "g" || rating === "pg") {
         // Retrieves the gif sources
-            var gifStill = response.data[i].images.downsized_still.url;
-            var animate = response.data[i].images.downsized_large.url;
-            var still = response.data[i].images.downsized_still.url;
-        // Adds a data state
-            $("img").attr("data-state", "still"); 
-            $("img").addClass("animals");      
-        // Appends the gifs
             var displayGifs = $("<img>").attr("src", gifStill);
+            displayGifs.attr("animated", gifAnimated);
+            displayGifs.attr("frozen", gifStill); 
+            // Adds data state and gif sources
+            $("img").attr("data-state", "still");
         // Puts the new gifs above the previous
             gifDiv.append(displayGifs);
             $("#gif-view").prepend(gifDiv);
@@ -42,13 +47,10 @@ function displayGifs() {
         };
      };  
 
-     $(".animals").on("click", function() {
-        var gif = $(this).attr("data-name");
-        var apikey = "&api_key=XbZX4OQK9xwpKzmheb9b2bF2LQIlZbR8&limit=10";
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gif + apikey;
+     $("img").on("click", function() {
         var state = $(this).attr("data-state");
-        // var gifStill = response.data[i].images.downsized_still.url;
-        // var gifAnimate = response.data[i].images.downsized_large.url;
+        var still = $(this).attr("frozen");
+        var animate = $(this).attr("animated");
 
         if (state === "still") {
         state = "animate";
@@ -68,12 +70,15 @@ function displayGifs() {
 // This function handles events where the add gif button is clicked
 $("#add-gif-type").on("click", function(event) {
     event.preventDefault();
+    var textBox = $("#gif-input");
+    if (textBox !== "") {
  // This line of code will grab the input from the textbox
     var animal = $("#gif-input").val().trim();
  // The animal from the textbox is then added to our array
     gifChoices.push(animal);
  // Calling the function
     renderButtons();
+    };
   }); 
 
 // Function for creating buttons
@@ -81,8 +86,8 @@ $("#add-gif-type").on("click", function(event) {
    $("#buttons-view").empty();
 // Loops through the array of animals
    for (var i = 0; i < gifChoices.length; i++) {
-// Then dynamicaly generates buttons for each animal
-     var a = $("<button>");
+// Then dynamically generates buttons for each animal
+     var a = $("<button class='btn btn-large btn-danger'>");
 // Adds a class to our button
      a.addClass("gif-button");
 // Adds a data-attribute

@@ -4,3 +4,20 @@ form,
 input {
     margin: 10px;
     }
+
+body {
+    background-color: mintcream;
+}
+
+.gif-div {
+    font-size: 16px;
+}
+
+/* #animate-text {
+    font-size: 25px;
+    padding-bottom:
+} */
+
+img {
+    border-radius: 5px;
+}

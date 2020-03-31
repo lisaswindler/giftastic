@@ -10,21 +10,22 @@
 <body>
     <div class="container text-center">
         <div>
-            <h1>Animal Gifs!</h1>
+            <h1 class="display-3">Animal Gifs!</h1>
         
             <!-- Rendered buttons will get dumped here  -->
             <div id="buttons-view"></div>
         
             <form id="gif-form">
-            <label for="gif-input">Search for Animal Gifs</label>
-            <input type="text" id="gif-input"><br>
+            <label for="gif-input" class="lead">Search for animals:</label>
+            <input type="text" id="gif-input" class="rounded border">
         
             <!-- Button triggers new gif type to be added -->
-            <input id="add-gif-type" type="submit" value="Add Animal">
+            <input id="add-gif-type" class="btn btn-large btn-danger pt-1 pb-1" type="submit" value="Add">
             </form>
         </div>
 
         <!-- Gifs will get dumped Here -->
+            <h3 id="animate-text" class="mx-auto pt-3 pb-3 col-6 border border-danger rounded mb-4">Click an image to see it animate</h3>
             <div id="gif-view"></div>
   
     <script
