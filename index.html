@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Animal Gif Search</title>
+</head>
+<body>
+    <div class="container text-center">
+        <h1>Animal Gifs!</h1>
+    
+        <!-- Rendered buttons will get dumped here  -->
+        <div id="buttons-view"></div>
+    
+        <form id="gif-form">
+          <label for="gif-input">Search for Animal Gifs</label>
+          <input type="text" id="gif-input"><br>
+    
+          <!-- Button triggers new gif type to be added -->
+          <input id="add-gif-type" type="submit" value="Add Animal">
+        </form>
+    
+        <!-- Gifs will get dumped Here -->
+        <div id="gif-view"></div>    
+    </div>    
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script src="gifs.js"></script>
+</body>
+</html>
