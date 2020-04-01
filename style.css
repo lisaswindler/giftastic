@@ -10,14 +10,14 @@ body {
 }
 
 .gif-div {
-    font-size: 16px;
+    font-size: 12px;
 }
-
-/* #animate-text {
-    font-size: 25px;
-    padding-bottom:
-} */
 
 img {
-    border-radius: 5px;
+    border-radius: 3px;
 }
+
+.gif-button {
+    text-transform: uppercase;
+}
+
