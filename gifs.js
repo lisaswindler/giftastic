@@ -17,14 +17,13 @@ $(document).ready(function() {
         url: queryURL,
         method: "GET"
     }).then(function(response) {
-        console.log(response);
     // Creates a div to hold the gif
         var gifDiv = $("<div>");
     // Shows the text with click instructions     
         $("#animate-text").show();
     // Adds a class to the gifDiv for css
         gifDiv.addClass("gif-div"); 
-    // Retrieves the rating
+    // Retrieves the info
         for (var i = 0; i < response.data.length; i++) {
         var rating = response.data[i].rating;
         var source = response.data[i].source;
